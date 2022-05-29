@@ -1,5 +1,8 @@
 # ZipCoder - Powerful zip-code validation
 
+![Haskell](https://img.shields.io/badge/Haskell-purple?style=for-the-badge&logo=haskell&logoColor=white)
+![Cabal](https://img.shields.io/badge/Cabal-blue?style=for-the-badge&logo=haskell&logoColor=white)
+
 Powerful zip-code validation in a convenient CLI tool, written in Haskell.
 
 Currently supporting NL and JP codes.
