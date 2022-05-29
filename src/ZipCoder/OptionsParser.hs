@@ -3,7 +3,10 @@ module ZipCoder.OptionsParser where
 import Options.Applicative
 import Data.Semigroup ((<>))
 import ZipCoder.Model
+import Data.List.Split
 
+extractCodesFromOptions :: String -> [String]
+extractCodesFromOptions = splitOn ":"
 
 zipCoderOptions :: Parser ZipCoderOptions
 zipCoderOptions = ZipCoderOptions
