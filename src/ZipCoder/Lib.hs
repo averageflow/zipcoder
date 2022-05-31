@@ -10,9 +10,9 @@ import Options.Applicative
 import System.Exit
 import Text.Printf (printf)
 import Text.RawString.QQ
-import Text.Regex.TDFA
 import ZipCoder.Model
 import ZipCoder.OptionsParser
+import Text.Regex.PCRE
 
 type ZipCodeValidationFunction = (String -> Bool)
 
@@ -27,7 +27,7 @@ getMasterZipCodeValidator =
     [ ("AT", (=~ [r|^[1-9]\d{3}$|])),
       ("AU", (=~ [r|^\d{4}$|])),
       ("BE", (=~ [r|^[1-9]\d{3}$|])),
-      ("CA", (=~ [r|^(?i)([^DFIOQUWZ\d]{1}[0-9]{1}[^DFIOQU\d]{1})\s*([0-9]{1}[^DFIOQU\d]{1}[0-9]{1})$|])),
+      ("CA", (=~ [r|^(?i)([^DFIOQUWZ\d]{1}\d{1}[^DFIOQU\d]{1})\s*(\d{1}[^DFIOQU\d]{1}\d{1})$|])),
       ("CH", (=~ [r|^[1-9]\d{3}$|])),
       ("CZ", (=~ [r|^[1-7]\d{4}$|])),
       ("DE", (=~ [r|^\d{5}$|])),
@@ -35,14 +35,14 @@ getMasterZipCodeValidator =
       ("ES", (=~ [r|^\d{5}$|])),
       ("FI", (=~ [r|^\d{5}$|])),
       ("FR", (=~ [r|^\d{5}$|])),
-      ("GB", (=~ [r|^(?i)[A-Z]{1,2}([0-9]{1,2})\s*([0-9A-Z]{3,4})$|])),
+      ("GB", (=~ [r|^(?i)[A-Z]{1,2}(\d{1,2})\s*([0-9A-Z]{3,4})$|])),
       ("HR", (=~ [r|^[1-9]\d{4}$|])),
       ("HU", (=~ [r|^[1-9]\d{3}$|])),
-      ("IE", (=~ [r|^(?i)[A-Z]{1}[0-9]{1,2}[0-9W]{1}[ \-]?[0-9A-Z]{4}$|])),
+      ("IE", (=~ [r|^(?i)[A-Z]{1}\d{1,2}[0-9W]{1}[ \-]?[0-9A-Z]{4}$|])),
       ("IT", (=~ [r|^\d{5}$|])),
-      ("JP", (=~ [r|^[0-9]{3}-[0-9]{4}$|])),
+      ("JP", (=~ [r|^\d{3}-\d{4}$|])),
       ("KR", (=~ [r|^\d{4}$|])),
-      ("NL", (=~ [r|^(?i)[1-9][0-9]{3} ?(?!SA|SD|SS)[A-Z]{2}$|])),
+      ("NL", (=~ [r|^(?i)[1-9]\d{3} ?(?!SA|SD|SS)[A-Z]{2}$|])),
       ("NO", (=~ [r|^\d{4}$|])),
       ("PL", (=~ [r|^\d{2}-\d{3}$|])),
       ("PT", (=~ [r|^[1-9]\d{3}-\d{3}$|])),
