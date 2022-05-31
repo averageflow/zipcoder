@@ -5,7 +5,7 @@
 
 Powerful zip-code validation in a convenient CLI tool, written in Haskell.
 
-Currently supporting NL and JP codes.
+Currently supporting zip-codes of a few dozen countries. PRs are welcome and it's a very easy change.
 
 **Validating Dutch (NL) zip-codes**
 
